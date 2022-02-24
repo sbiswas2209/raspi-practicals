@@ -1,16 +1,16 @@
-import RPi.GPIO as IO           
-import time                     
-
-while True:
-    IO.setmode (IO.BOARD)       
-    IO.setup(40,IO.OUT)             
-    IO.output(40,1)                      
-    time.sleep(1)                        
-    IO.cleanup()                         
-    time.sleep(1)                        
-    IO.setmode (IO.BOARD)
-    IO.setup(40,IO.OUT)
-    IO.output(40,0)
-    time.sleep(1)
-    IO.cleanup()
-    time.sleep(1)
+import RPi.GPIO as GPIO  
+import time  
+led = 40
+GPIO.setmode( GPIO.BOARD)  
+GPIO.setup( led, GPIO.OUT)  
+pwm_led = GPIO.PWM( led, 50)  
+pwm_led.start(100)  
+duty=0
+while True:  
+    if duty<100:
+        duty+=25
+    else:
+        duty-=25
+    pwm_led.ChangeDutyCycle(duty)  
+    time.sleep(0.5)  
+GPIO.cleanup()
