@@ -5,4 +5,4 @@ if a < 7:
 elif a> 7:
     print(str(a)+" is more than seven")
 else:
-    print(str(a)+" is equal to seven")
+    print(str(a)+" is equal to seven") 
